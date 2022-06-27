@@ -24,9 +24,12 @@
     }
 
     // String literal Types
-    type Name = 'name';
+    type Name = 'name' | 'chang';
     let geunName: Name;
     geunName = 'name'; // 문자열 name 만 쓸 수 있다.
+    console.log(geunName);
+    geunName = 'chang';
+    console.log(geunName)
     type JSON = 'json';
     const json: JSON = 'json'; // 문자열 json만 사용할 수 있다.
 
