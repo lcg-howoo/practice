@@ -5,7 +5,6 @@
     }
     // 인터페이스 - 나랑 의사소통하려면 나는 이런 규약을 가지고 있어 나는 이런 행동을 할 수 있다라는 것을 명시해 놓은 것.
     // contract 개념
-
     interface CoffeeMaker {
         makeCoffee(shots: number): CoffeeCup;
     }
@@ -21,31 +20,22 @@
     // protected 해당 클래스를 상속한 자식들은 접근 가능
 
     class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker {
+
+        //필드
+        private static BEANS_GRAM_PER_SHOT: number = 7;  //private으로 설정하면 못 본다. CoffeeMachine. 으로 못 호출
+        private coffeeBeans: number = 0; //내부에서는 private으로 숨기고
+
         // 생성자를 통해 생성하는 것을 막은 것. -> static 메서드를 이용해서 만드는 것을 권장
         private constructor(coffeBeans: number) {
             this.coffeeBeans = coffeBeans;
         }
 
-        //필드
-        private static BEANS_GRAM_PER_SHOT: number = 7;  //private으로 설정하면 못 본다. CoffeeMachine. 으로 못 호출
-        private coffeeBeans: number = 0; //내부에서는 private으로 숨기고
 
         //메서드
         makeCoffee(shots: number): CoffeeCup {
             this.grindBeans(shots);
             this.preheat();
             return this.extract(shots);
-        }
-        private extract(shots: number): CoffeeCup {
-            console.log(`pulling ${shots} shots...`);
-            return {
-                shots: shots,
-                hasMilk: false,
-            };
-        }
-
-        private preheat(): void {
-            console.log("heating up!!")
         }
 
         private grindBeans(shots: number) {
@@ -55,6 +45,19 @@
             this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAM_PER_SHOT;
             console.log(`grinding beans for ${shots}`)
         }
+
+        private preheat(): void {
+            console.log("heating up!!")
+        }
+
+        private extract(shots: number): CoffeeCup {
+            console.log(`pulling ${shots} shots...`);
+            return {
+                shots: shots,
+                hasMilk: false,
+            };
+        }
+
         // 컨스트럭터를 거치지않고 만들고 싶을 경우
         static makeMachine(coffeeBeans: number): CoffeeMachine {
             return new CoffeeMachine(coffeeBeans)
@@ -91,10 +94,10 @@
     maker3.makeCoffee(2);
     maker3.clean();
 
-    class AmateurUser {
-        constructor(private machine: CoffeeMaker) {
 
-        }
+
+    class AmateurUser {
+        constructor(private machine: CoffeeMaker) {}
         makeCoffee() {
             const coffee = this.machine.makeCoffee(2);
             console.log(coffee)
