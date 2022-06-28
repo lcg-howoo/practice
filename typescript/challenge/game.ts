@@ -22,6 +22,9 @@ function move(direction: Direction){
             position.x += 1;
             break;
         default:
+            // compile 단계에서 알아차릴 수 있게 never를 사용.
+            const invalid: never = direction;
+            console.log(invalid);
             throw new Error(`unknown direction ${direction}`)
     }
 }
