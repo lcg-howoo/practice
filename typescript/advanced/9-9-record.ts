@@ -12,4 +12,6 @@
         contact: {title: 'Title'}
     }
 
+    type Product = 'cat' | 'dog';
+    type NewProduct = Capitalize<Product> // Cat, Dog 로 맨 앞자리 대문자로 만들어준다.
 }
