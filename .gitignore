@@ -5,3 +5,5 @@
 /typescript/config/src/logging/logging.js.map
 /typescript/config/src/main.js
 /typescript/config/src/main.js.map
+# build file 제외
+/motion/dist/*
