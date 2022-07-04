@@ -4,6 +4,7 @@ import {NoteComponent} from "./components/page/item/note.js";
 import {TodoComponent} from "./components/page/item/todo.js";
 import {VideoComponent} from "./components/page/item/video.js";
 import {Component} from "./components/component.js";
+import {InputDialog} from "./components/dialog/dialog.js";
 
 class App {
   private readonly page: Component & Composable;
@@ -23,9 +24,26 @@ class App {
 
     const todo = new TodoComponent('Todo title', 'Todo Body');
     this.page.addChild(todo);
+    const imageBtn = document.querySelector('#new-image')! as HTMLButtonElement;
+    imageBtn.addEventListener('click', () => {
+      const dialog = new InputDialog();
+
+      dialog.setOnCloseListener(() => {
+        dialog.removeFrom(document.body);
+      })
+
+      dialog.setOnSubmitListener(() => {
+        // 섹션을 만들어서 페이지에 추가한다.
+        dialog.removeFrom(document.body);
+      })
+      dialog.attachTo(document.body);
+    })
+    // const videoBtn = document.querySelector('.new-video')! as HTMLButtonElement;
+
 
   }
 }
+
 // as 타입 엘리어스하는 이유 동적으로 만드는 것이 아닌 정적인 타입인 경우에는 타입 엘리어스를 사용해도 괜찮다.
 // ! 무조건 null이 아니고 htmlelement type으로 지정
 new App(document.querySelector('.document')! as HTMLElement);
