@@ -1,13 +1,26 @@
 import {BaseComponent, Component} from "../component.js";
 
-export class PageComponent extends BaseComponent<HTMLUListElement> implements Composable {
+export interface Composable {
+  addChild(child: Component): void;
+}
 
-  constructor() {
+type OnCloseListener = () => void;
+
+interface SectionContainer extends Component, Composable {
+  setOnCloseListener(listener: OnCloseListener): void;
+}
+
+type SectionContainerConstructor = {
+  new(): SectionContainer;
+}
+
+export class PageComponent extends BaseComponent<HTMLUListElement> implements Composable {
+  constructor(private pageItemConstructor: SectionContainerConstructor) {
     super('<ul class="page"></ul>')
   }
 
   addChild(section: Component) {
-    const item = new PageItemComponent();
+    const item = new this.pageItemConstructor();
     item.addChild(section);
     item.attachTo(this.element, 'beforeend');
     item.setOnCloseListener(() => {
@@ -16,12 +29,7 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
   }
 }
 
-export interface Composable {
-  addChild(child: Component): void;
-}
-type OnCloseListener = () => void;
-
-class PageItemComponent extends BaseComponent<HTMLElement> implements Composable{
+export class PageItemComponent extends BaseComponent<HTMLElement> implements SectionContainer {
   private closeListener?: OnCloseListener;
 
   constructor() {
