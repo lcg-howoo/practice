@@ -3,7 +3,7 @@ import {ImageComponent} from "./components/page/item/image.js";
 import {NoteComponent} from "./components/page/item/note.js";
 import {TodoComponent} from "./components/page/item/todo.js";
 import {VideoComponent} from "./components/page/item/video.js";
-import {Component} from "./components/component";
+import {Component} from "./components/component.js";
 
 class App {
   private readonly page: Component & Composable;
