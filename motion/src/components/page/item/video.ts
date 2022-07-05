@@ -4,7 +4,7 @@ export class VideoComponent extends BaseComponent<HTMLElement> {
   constructor(title: string, url: string) {
     super('<section class="video__player">\n' +
         '  <iframe src="" frameborder="0" class="video__iframe"></iframe>\n' +
-        '  <h3 class="video__title"></h3>\n' +
+        '  <h3 class="page-item__title video__title"></h3>\n' +
         '</section>');
     const iframe = this.element.querySelector('.video__iframe')! as HTMLInputElement
     iframe.src = this.convertToEmbeddedURL(url);
