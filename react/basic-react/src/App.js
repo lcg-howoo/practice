@@ -5,7 +5,6 @@ import {useState} from "react";
 
 const App = () => {
   const [expenses, setExpenses] = useState([]);
-
   const addExpenseHandler = expense => {
     const expenseData = {
       ...expense,
@@ -13,14 +12,12 @@ const App = () => {
     }
     console.log("expenseData : ", expenseData);
     setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses]
+      return [expenseData, ...prevExpenses]
     });
-
   }
 
   return (
       <div>
-        <h2>Let's get started</h2>
         <NewExpense onAddExpense={addExpenseHandler}/>
         <Expenses items={expenses}/>
       </div>
