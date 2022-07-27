@@ -14,5 +14,7 @@ public class JavaCollectionExample {
 
         List<Student> clone = new ArrayList<>(students);
         System.out.println(clone);
+
+        System.out.println(students.equals(clone));
     }
 }

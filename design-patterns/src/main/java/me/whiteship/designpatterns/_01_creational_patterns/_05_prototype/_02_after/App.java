@@ -25,6 +25,9 @@ public class App {
         System.out.println(clone.getRepository() == githubIssue.getRepository());
 
         System.out.println(clone.getUrl());
+
+        // clone != githubIssue 참조값이 다르다
+        // clone.equals(githubIssue) => true 안의 내용물은 같지만 참조값이 다르다
     }
 
 }
