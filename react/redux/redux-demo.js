@@ -31,7 +31,7 @@ const counterSubscriber = () => {
   const latestState = store.getState();
   console.log(latestState)
 };
-// counterSubscriber를 취한다.
+// counterSubscriber를 취한다. = component
 store.subscribe(counterSubscriber)
 
 // counterSubscriber() 실행한 값을 넘기는 것이 아닌 참조값만 넘기는 이유는 리듀서와 subscribe함수를 리덕스가 실행하기 떄문.
