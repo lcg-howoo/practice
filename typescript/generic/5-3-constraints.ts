@@ -40,6 +40,9 @@
 
     const ellieAfterPay = pay(ellie);
     const bobAfterPay = pay(bob);
+
+    const test = payBad(ellie);
+    // test.work 관련 메서드 못 이용.
     /* pay 메서드만 나온다. pay메서드는 반환값이 Employee지만 이용할 수 있는 메서드를 찾을때는 workFullTime 메서드가 없어짐
        generic을 이용해서 해결하자!!!
     */

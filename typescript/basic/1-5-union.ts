@@ -65,8 +65,24 @@
         }
     }
 
-    if("mother" in person) {
+    let person2 = {
+        name : "lee",
+        address : "osan",
+        job : "programmer",
+        mother: 'kim',
+        family : {
+            mother : {
+                name: "kim",
+                age: 40,
+                job: "doesn't hava a job"
+            }
+        }
+    }
+    // key값을 찾을 떄 nested 된것은 못 찾는다.
+    if("mother" in person2) {
         console.log("person 객체 안에 family 속성이 있습니다.");
+    }else{
+        console.log("person 객체 안에 family 속성이 없습니다.");
     }
 
     //discriminated union 유니온 타입에 차별화되는 이름이 동일한  타입을 둠으로써 간편하게 구분할 수 있다.

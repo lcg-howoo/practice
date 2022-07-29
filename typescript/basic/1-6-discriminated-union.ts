@@ -2,10 +2,10 @@
     //discriminated union 유니온 타입에 차별화되는 이름이 동일한  타입을 둠으로써 간편하게 구분할 수 있다.
 
     // funciton: login -> success or fail;
-    type LoginState = SucessState | FailState
+    type LoginState = SuccessState | FailState
 
     type Result = 'success' | "fail";
-    type SucessState = {
+    type SuccessState = {
         result: 'success';
         response: {
             body: string;
