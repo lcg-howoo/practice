@@ -18,7 +18,7 @@ const counterSlice = createSlice({
       state.showCounter = !state.showCounter;
     }
   }
-});
+}); 
 export const counterActions = counterSlice.actions;
 
 export default counterSlice.reducer
